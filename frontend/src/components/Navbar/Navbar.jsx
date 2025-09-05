@@ -8,10 +8,10 @@ export default function Navbar() {
         <div className='navbar'>
             <div className='nav-logo'>
                 <img src={logo} alt=''/>
-                <p>MERN-CART</p>
+                <p>MERN CART</p>
             </div>
             <ul className='nav-menu'>
-                <li>Shop</li>
+                <li>Shop <hr /></li>
                 <li>Men</li>
                 <li>Women</li>
                 <li>Kids</li>
