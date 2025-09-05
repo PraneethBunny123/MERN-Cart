@@ -1,7 +1,7 @@
-export default function ShopCategory() {
+export default function ShopCategory({category}) {
     return (
         <div>
-            ShopCategory
+            ShopCategory: {category}
         </div>
     )
 }

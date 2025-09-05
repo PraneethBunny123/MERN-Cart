@@ -44,6 +44,11 @@
     background: #FF4141;
 }
 
+.link {
+    text-decoration: none;
+    color: #626262;
+}
+
 .nav-login-cart {
     display: flex;
     align-items: center;
@@ -80,3 +85,4 @@
     background: red;
     color: white;
 }
+
