@@ -2,8 +2,13 @@ import './Navbar.css'
 
 import logo from "../../Assets/Frontend_Assets/logo.png"
 import cart_icon from "../../Assets/Frontend_Assets/cart_icon.png"
+import { useState } from 'react'
+
+const CATEGORIES = ["Shop", "Men", "Women", "Kids"]
 
 export default function Navbar() {
+    const [category, setCategory] = useState(CATEGORIES[0])
+
     return (
         <div className='navbar'>
             <div className='nav-logo'>
@@ -11,10 +16,15 @@ export default function Navbar() {
                 <p>MERN CART</p>
             </div>
             <ul className='nav-menu'>
-                <li>Shop <hr /></li>
-                <li>Men</li>
-                <li>Women</li>
-                <li>Kids</li>
+                {CATEGORIES.map(cat => (
+                    <li 
+                        key={cat}
+                        onClick={() => setCategory(cat)}
+                    >
+                        {cat} 
+                        {category === cat && <hr />}
+                    </li>
+                ))}
             </ul>
             <div className='nav-login-cart'>
                 <button>Login</button>
