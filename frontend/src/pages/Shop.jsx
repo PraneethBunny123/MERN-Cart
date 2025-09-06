@@ -1,4 +1,5 @@
 import Hero from "../components/Hero/Hero";
+import Offers from "../components/Offers/Offers";
 import Popular from "../components/Popular/Popular";
 
 export default function Shop() {
@@ -6,6 +7,7 @@ export default function Shop() {
         <div>
             <Hero />
             <Popular />
+            <Offers />
         </div>
     )
 }
