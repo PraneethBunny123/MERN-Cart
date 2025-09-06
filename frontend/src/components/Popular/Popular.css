@@ -4,11 +4,12 @@
     align-items: center;
     gap: 10px;
     height: 90vh;
+    margin-top: 150px;
 }
 
 .popular h1 {
     color: #171717;
-    font-size: 50px;
+    font-size: 35px;
     font-weight: 600;
 }
 

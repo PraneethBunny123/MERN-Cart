@@ -8,10 +8,10 @@ export default function Item({name, image, new_price, old_price}) {
             <p>{name}</p>
             <div className="item-prices">
                 <div className="item-price-new">
-                    {new_price}
+                    ${new_price}
                 </div>
                 <div className="item-price-old">
-                    {old_price}
+                    ${old_price}
                 </div>
             </div>
         </div>
