@@ -1,0 +1,18 @@
+.product-display {
+    display: flex;
+    margin: 0px 170px;
+}
+
+.product-display-left {
+    display: flex;
+    gap: 17px;
+}
+
+.product-display-image-list {
+    height: 163px;
+}
+
+.product-display-image-main {
+    width: 586px;
+    height: 700px;
+}
