@@ -8,11 +8,11 @@ export default function ShopCategory({category, banner}) {
     
     return (
         <div className="shop-category">
-            <img src={banner} alt=""/>
+            <img src={banner} alt="" className="shop-category-banner"/>
             <div className="shop-category-index-sort">
                 <p>
-                    <span>Showing 1-12</span>
-                     out of 36 products
+                    <span>Showing 1-12 </span>
+                    out of 36 products
                 </p>
                 <div className="shop-category-sort">
                     Sort by <img src={dropdown_icon} alt=""/>
