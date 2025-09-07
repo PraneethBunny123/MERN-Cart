@@ -37,7 +37,7 @@ export default function ProductDisplay({image, name, old_price, new_price}) {
                 </div>
                 <div className='product-display-right-size'>
                     <h1>Select Size</h1>
-                    <div className='product-display-right-size'>
+                    <div className='product-display-right-sizes'>
                         <div>S</div>
                         <div>M</div>
                         <div>L</div>
