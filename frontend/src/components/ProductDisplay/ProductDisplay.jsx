@@ -33,7 +33,7 @@ export default function ProductDisplay({image, name, old_price, new_price}) {
                     <div className='product-display-right-price-new'>${new_price}</div>
                 </div>
                 <div className='product-display-right-description'>
-                    Elegant and versatile women’s blouse crafted from soft, breathable fabric. Features a flattering fit, modern design, and lightweight comfort—perfect for both casual outings and office wear.
+                    Elegant and versatile women’s blouse crafted from soft, breathable fabric, perfect for both casual outings and office wear.
                 </div>
                 <div className='product-display-right-size'>
                     <h1>Select Size</h1>
@@ -46,10 +46,10 @@ export default function ProductDisplay({image, name, old_price, new_price}) {
                 </div>
                 <button>Add to Cart</button>
                 <p className='product-display-right-category'>
-                    <span>Category :</span>Women, T-Shirt, Crop Top
+                    <span>Category: </span>Women, T-Shirt, Crop Top
                 </p>
                 <p className='product-display-right-category'>
-                    <span>Tags :</span>Modren, Casual
+                    <span>Tags: </span>Modren, Casual
                 </p>
             </div>
         </div>

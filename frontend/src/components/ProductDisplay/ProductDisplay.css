@@ -92,3 +92,11 @@
     border: none;
     cursor: pointer;
 }
+
+.product-display-right-category {
+    margin-top: 10px;
+}
+
+.product-display-right-category span {
+    font-weight: 600;
+}
