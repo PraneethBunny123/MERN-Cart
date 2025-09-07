@@ -28,3 +28,17 @@
     row-gap: 80px;
     gap: 10px;
 }
+
+.shop-category-loadmore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 150px auto;
+    width: 233px;
+    height: 69px;
+    border-radius: 75px;
+    background: #ededed;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
