@@ -9,7 +9,7 @@ export default function RelatedProducts() {
             <hr />
             <div className="related-products-item">
                 {data_product.map(item => (
-                    <item 
+                    <Item 
                         key={item.id}
                         {...item}
                     />

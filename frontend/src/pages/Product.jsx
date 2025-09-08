@@ -3,6 +3,7 @@ import all_product from "../Assets/Frontend_Assets/all_product"
 import Breadcrum from "../components/Breadcrum/Breadcrum"
 import ProductDisplay from "../components/ProductDisplay/ProductDisplay"
 import DescriptionBox from "../components/DescriptionBox/DescriptionBox"
+import RelatedProducts from "../components/RelatedProducts/RelatedProducts"
 
 export default function Product() {
     const {productId} = useParams()
@@ -14,6 +15,7 @@ export default function Product() {
             <Breadcrum {...product}/>
             <ProductDisplay {...product}/>
             <DescriptionBox />
+            <RelatedProducts />
         </div>
     )
 }
