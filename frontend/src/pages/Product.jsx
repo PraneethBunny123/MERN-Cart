@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import all_product from "../Assets/Frontend_Assets/all_product"
 import Breadcrum from "../components/Breadcrum/Breadcrum"
 import ProductDisplay from "../components/ProductDisplay/ProductDisplay"
+import DescriptionBox from "../components/DescriptionBox/DescriptionBox"
 
 export default function Product() {
     const {productId} = useParams()
@@ -12,6 +13,7 @@ export default function Product() {
         <div>
             <Breadcrum {...product}/>
             <ProductDisplay {...product}/>
+            <DescriptionBox />
         </div>
     )
 }
