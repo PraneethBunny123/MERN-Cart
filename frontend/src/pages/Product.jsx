@@ -11,7 +11,7 @@ export default function Product() {
     const {all_product} = useContext(ShopContext)
 
     const {productId} = useParams()
-    console.log(productId)
+    // console.log(productId)
     const product = all_product.find(item => item.id === Number(productId))
 
     return (

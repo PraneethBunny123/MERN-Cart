@@ -1,9 +1,16 @@
 import './ProductDisplay.css'
 import star_icon from '../../Assets/Frontend_Assets/star_icon.png'
 import star_dull_icon from '../../Assets/Frontend_Assets/star_dull_icon.png'
+import { useContext } from 'react'
+import { ShopContext } from '../../context/ShopContext'
+import { useParams } from 'react-router-dom'
 
 
 export default function ProductDisplay({image, name, old_price, new_price}) {
+    const {productId} = useParams()
+    // console.log(productId)
+    const {addToCart} = useContext(ShopContext)
+
     return (
         <div className='product-display'>
             <div className='product-display-left'>
@@ -44,7 +51,7 @@ export default function ProductDisplay({image, name, old_price, new_price}) {
                         <div>XL</div>
                     </div>
                 </div>
-                <button>Add to Cart</button>
+                <button onClick={() => addToCart(productId)}>Add to Cart</button>
                 <p className='product-display-right-category'>
                     <span>Category: </span>Women, T-Shirt, Crop Top
                 </p>
