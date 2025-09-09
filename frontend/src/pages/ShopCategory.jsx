@@ -1,9 +1,12 @@
 import "./css/ShopCategory.css"
-import all_product from "../Assets/Frontend_Assets/all_product"
 import dropdown_icon from "../Assets/Frontend_Assets/dropdown_icon.png"
 import Item from "../components/Item/Item"
+import { useContext } from "react"
+import { ShopContext } from "../context/ShopContext"
 
 export default function ShopCategory({category, banner}) {
+    const {all_product} = useContext(ShopContext)
+
     const filteredProducts = all_product.filter(product => product.category === category)
     
     return (
