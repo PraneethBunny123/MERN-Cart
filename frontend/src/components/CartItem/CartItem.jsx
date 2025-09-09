@@ -43,7 +43,7 @@ export default function CartItem() {
                 return null
             })}
 
-            <div className='cart-item-down'>
+            <div className='cart-item-checkout'>
                 <div className='cart-item-total'>
                     <h1>Cart Total</h1>
                     <div className='cart-item-total-item'>
@@ -60,8 +60,8 @@ export default function CartItem() {
                         <h3>Total</h3>
                         <h3>${0}</h3>
                     </div>
+                    <button>PROCEED TO CHECKOUT</button>
                 </div>
-                <button>PROCEED TO CHECKOUT</button>
             </div>
             <div className='cart-item-promo'>
                 <p>If you have a promo code, Enter it here</p>

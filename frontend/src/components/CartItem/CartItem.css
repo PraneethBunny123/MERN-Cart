@@ -40,3 +40,34 @@
     margin: 0px 40px;
     cursor: pointer;
 }
+
+.cart-item-checkout {
+    display: flex;
+    margin: 100px 0px;
+}
+
+.cart-item-total {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+    gap: 40px;
+}
+
+.cart-item-total-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+
+.cart-item-total button {
+    width: 262px;
+    height: 58px;
+    outline: none;
+    border: none;
+    background: #ff5a5a;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
