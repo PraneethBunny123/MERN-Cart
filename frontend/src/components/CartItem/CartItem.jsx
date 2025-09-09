@@ -13,6 +13,7 @@ export default function CartItem() {
                 <p>Products</p>
                 <p>Title</p>
                 <p>Price</p>
+                <p>Qunatity</p>
                 <p>Total</p>
                 <p>Remove</p>
             </div>
@@ -25,9 +26,9 @@ export default function CartItem() {
                             <div className='cart-item-format cart-item-main'>
                                 <img src={product.image} alt='' className='cart-item-product-icon'/>
                                 <p>{product.name}</p>
-                                <p>{product.new_price}</p>
+                                <p>${product.new_price}</p>
                                 <button className='cart-item-quantity'>{productQuantity}</button>
-                                <p>{product.new_price * productQuantity}</p>
+                                <p>${product.new_price * productQuantity}</p>
                                 <img 
                                     src={remove_icon} 
                                     alt='' 

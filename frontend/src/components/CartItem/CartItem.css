@@ -25,13 +25,18 @@
 }
 
 .cart-item-product-icon {
-
+    height: 62px;
 }
 
 .cart-item-quantity {
-
+    width: 64px;
+    height: 50px;
+    border: 2px solid #ebebeb;
+    background: #fff;
 }
 
 .cart-item-remove {
-    
+    width: 15px;
+    margin: 0px 40px;
+    cursor: pointer;
 }
