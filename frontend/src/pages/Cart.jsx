@@ -1,7 +1,9 @@
+import CartItem from "../components/CartItem/CartItem";
+
 export default function Cart() {
     return (
         <div>
-            Cart
+            <CartItem />
         </div>
     )
 }
