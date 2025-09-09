@@ -40,7 +40,36 @@ export default function CartItem() {
                         </div>
                     )
                 }
+                return null
             })}
+
+            <div className='cart-item-down'>
+                <div className='cart-item-total'>
+                    <h1>Cart Total</h1>
+                    <div className='cart-item-total-item'>
+                        <p>Subtotal</p>
+                        <p>${0}</p>
+                    </div>
+                    <hr />
+                    <div className='cart-item-total-item'>
+                        <p>Shipping Fee</p>
+                        <p>Free</p>
+                    </div>
+                    <hr />
+                    <div className='cart-item-total-item'>
+                        <h3>Total</h3>
+                        <h3>${0}</h3>
+                    </div>
+                </div>
+                <button>PROCEED TO CHECKOUT</button>
+            </div>
+            <div className='cart-item-promo'>
+                <p>If you have a promo code, Enter it here</p>
+                <div className='cart-item-promo-box'>
+                    <input type='text' placeholder='promo code' />
+                    <button>Submit</button>
+                </div>
+            </div>
         </div>
     )
 }
