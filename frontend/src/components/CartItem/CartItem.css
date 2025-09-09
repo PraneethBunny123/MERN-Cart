@@ -71,3 +71,35 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+.cart-item-promo {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cart-item-promo-box {
+    width: 504px;
+    margin-top: 15px;
+    padding-left: 20px;
+    height: 58px;
+    background: #eaeaea;
+}
+
+.cart-item-promo-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    width: 330px;
+    height: 50px;
+}
+
+.cart-item-promo-box button {
+    width: 170px;
+    height: 58px;
+    font-size: 16px;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
