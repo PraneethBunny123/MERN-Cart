@@ -86,6 +86,10 @@
     color: white;
 }
 
+.nav-dropdown {
+    display: none;
+}
+
 /* making responsive */
 
 @media(max-width: 1280px) {
@@ -137,4 +141,17 @@
         width: 18px;
         height: 18px;
     }
+}
+
+@media(max-width: 800px) {
+    .navbar {
+        padding: 10px 0px;
+    }
+    .nav-dropdown {
+        display: block;
+        width: 30px;
+        rotate: -90deg;
+        transition: 0.5s;
+    }
+
 }

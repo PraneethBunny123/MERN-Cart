@@ -2,7 +2,8 @@ import './Navbar.css'
 
 import logo from "../../Assets/Frontend_Assets/logo.png"
 import cart_icon from "../../Assets/Frontend_Assets/cart_icon.png"
-import { useContext, useState } from 'react'
+import nav_dropdown from "../../Assets/Frontend_Assets/nav_dropdown.png"
+import { useContext, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../../context/ShopContext'
 
@@ -27,8 +28,14 @@ const CATEGORIES = [
 
 export default function Navbar() {
     const [category, setCategory] = useState(CATEGORIES[0].name)
+    const menuRef = useRef()
 
     const {getTotalCartItems} = useContext(ShopContext)
+
+    function dropdownToggle(e) {
+        menuRef.current.classList.toggle('nav-menu-visible')
+        e.target.classList.toggle('open')
+    }
 
     return (
         <div className='navbar'>
@@ -36,7 +43,8 @@ export default function Navbar() {
                 <img src={logo} alt=''/>
                 <p>MERN CART</p>
             </div>
-            <ul className='nav-menu'>
+            <img className='nav-dropdown' src={nav_dropdown} alt='' onClick={dropdownToggle}/>
+            <ul ref={menuRef} className='nav-menu'>
                 {CATEGORIES.map(cat => (
                     <li 
                         key={cat.name}
