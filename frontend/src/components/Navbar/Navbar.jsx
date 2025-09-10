@@ -59,7 +59,7 @@ export default function Navbar() {
                 <Link to="/cart">
                     <img src={cart_icon} alt=''/>
                 </Link>
-                <div className='nav-cart-count'>{getTotalCartItems()}</div>
+                {getTotalCartItems() > 0 && <div className='nav-cart-count'>{getTotalCartItems()}</div>}
             </div>
         </div>
     )
