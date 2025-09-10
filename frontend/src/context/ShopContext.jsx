@@ -6,7 +6,8 @@ export const ShopContext = createContext({
     cartItems: {},
     addToCart: () => {},
     removeFromCart: () => {},
-    getTotalCartAmount: () => {}
+    getTotalCartAmount: () => {},
+    getTotalCartItems: () => {}
 })
 
 function defaultCartObject() {
@@ -39,6 +40,16 @@ export default function ShopContextProvider({children}) {
         }, 0)
     }
 
+    function getTotalCartItems() {
+        let totalItems = 0
+        for(const i in cartItems) {
+            totalItems += cartItems[i] 
+        }
+        return totalItems
+    }
+
+    console.log(getTotalCartItems())
+
     // console.log(getTotalCartAmount())
 
     const value = {
@@ -46,7 +57,8 @@ export default function ShopContextProvider({children}) {
         cartItems,
         addToCart,
         removeFromCart,
-        getTotalCartAmount
+        getTotalCartAmount, 
+        getTotalCartItems
     }
     
     return (
