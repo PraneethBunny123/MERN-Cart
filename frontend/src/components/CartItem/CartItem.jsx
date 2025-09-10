@@ -5,7 +5,7 @@ import ShopCategory from '../../pages/ShopCategory'
 import { ShopContext } from '../../context/ShopContext'
 
 export default function CartItem() {
-    const {all_product, cartItems, removeFromCart} = useContext(ShopContext)
+    const {all_product, cartItems, removeFromCart, getTotalCartAmount} = useContext(ShopContext)
 
     return (
         <div className='cart-item'>
@@ -48,7 +48,7 @@ export default function CartItem() {
                     <h1>Cart Total</h1>
                     <div className='cart-item-total-item'>
                         <p>Subtotal</p>
-                        <p>${0}</p>
+                        <p>${getTotalCartAmount()}</p>
                     </div>
                     <hr />
                     <div className='cart-item-total-item'>
@@ -58,7 +58,7 @@ export default function CartItem() {
                     <hr />
                     <div className='cart-item-total-item'>
                         <h3>Total</h3>
-                        <h3>${0}</h3>
+                        <h3>${getTotalCartAmount()}</h3>
                     </div>
                     <button>PROCEED TO CHECKOUT</button>
                 </div>

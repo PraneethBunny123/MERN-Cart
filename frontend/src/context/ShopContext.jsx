@@ -1,7 +1,13 @@
 import { createContext, useState } from "react"
 import all_product from "../Assets/Frontend_Assets/all_product"
 
-export const ShopContext = createContext()
+export const ShopContext = createContext({
+    all_product: [{}],
+    cartItems: {},
+    addToCart: () => {},
+    removeFromCart: () => {},
+    getTotalCartAmount: () => {}
+})
 
 function defaultCartObject() {
     return all_product.reduce((acc, product) => {
