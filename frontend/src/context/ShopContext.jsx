@@ -16,7 +16,7 @@ function defaultCartObject() {
 export default function ShopContextProvider({children}) {
     const [cartItems, setCartItems] = useState(defaultCartObject())
 
-    console.log(cartItems)
+    // console.log(cartItems)
 
     function addToCart(itemId) {
         setCartItems(prevState => ({...prevState, [itemId]: prevState[itemId]+1}))
@@ -27,8 +27,13 @@ export default function ShopContextProvider({children}) {
     } 
 
     function getTotalCartAmount() {
-
+        return all_product.reduce((acc, curr) => {
+            const id = curr.id
+            return acc + cartItems[id] * curr.new_price
+        }, 0)
     }
+
+    // console.log(getTotalCartAmount())
 
     const value = {
         all_product,
