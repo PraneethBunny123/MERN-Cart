@@ -59,6 +59,9 @@
 }
 
 @media(max-width: 1280px) {
+    .hero {
+        height: 80vh;
+    }
     .hero-left {
         padding-left: 100px;
     }
@@ -78,6 +81,9 @@
 }
 
 @media(max-width: 1024px) {
+    .hero {
+        height: 70vh;
+    }
     .hero-left {
         padding-left: 80px;
     }
@@ -101,6 +107,9 @@
 }
 
 @media(max-width: 800px) {
+    .hero {
+        height: 60vh;
+    }
     .hero-left {
         padding-left: 30px;
     }
@@ -126,6 +135,7 @@
 @media(max-width: 500px) {
     .hero {
         flex-direction: column;
+        height: 50vh;
     }
     .hero-right {
         display: none;
