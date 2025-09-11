@@ -22,11 +22,10 @@
 }
 
 .shop-category-products {
-    margin: 20px 150px;
+    margin: 20px 170px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 80px;
-    gap: 10px;
 }
 
 .shop-category-loadmore {
