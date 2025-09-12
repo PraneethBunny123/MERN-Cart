@@ -26,6 +26,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 80px;
+    justify-content: center;
+    gap: 20px;
 }
 
 .shop-category-loadmore {
@@ -40,4 +42,35 @@
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
+}
+
+@media(max-width: 1280px) {
+    .shop-category-banner {
+        margin: 20px auto;
+        width: 90%;
+    }
+    .shop-category-index-sort {
+        width: 90%;
+        margin: auto;
+    }
+    .shop-category-sort {
+        padding: 5px 10px;
+    }
+    .shop-category-index-sort p {
+        font-size: 12px;
+    }
+    .shop-category-products {
+        width: 90%;
+        margin: 10px auto;
+        row-gap: 40px;
+    }
+    .shop-category-products .items {
+        margin: auto;
+    }
+    .shop-category-loadmore {
+        margin: 100px auto;
+        width: 200px;
+        height: 60px;
+        font-size: 16px;
+    }
 }
