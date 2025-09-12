@@ -1,7 +1,6 @@
 import './CartItem.css'
 import remove_icon from "../../Assets/Frontend_Assets/cart_cross_icon.png"
 import { useContext } from 'react'
-import ShopCategory from '../../pages/ShopCategory'
 import { ShopContext } from '../../context/ShopContext'
 
 export default function CartItem() {
