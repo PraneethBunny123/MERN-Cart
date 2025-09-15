@@ -46,6 +46,16 @@ app.post('/upload', upload.single('product'), (req, res) => {
 })
 
 // adding product in database using schema
+app.post('/addProduct', async (req, res) => {
+    const product = new Product({
+        id: req.body.id,
+        name: req.body.name,
+        image: req.body.image,
+        category: req.body.category,
+        new_price: req.body.new_price,
+        old_price: req.body.old_price
+    })
+})
 
 
 app.listen(port, (err) => {
