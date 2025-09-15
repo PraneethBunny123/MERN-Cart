@@ -55,6 +55,15 @@ app.post('/addProduct', async (req, res) => {
         new_price: req.body.new_price,
         old_price: req.body.old_price
     })
+    console.log(product)
+
+    await product.save()
+    console.log("Saved to database")
+
+    res.json({
+        success: true,
+        name: req.body.name
+    })
 })
 
 
