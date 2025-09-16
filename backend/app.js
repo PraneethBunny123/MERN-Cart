@@ -8,7 +8,6 @@ const jwt = require("jsonwebtoken")
 const multer = require("multer")
 const path = require("path")
 const cors = require("cors");
-const { type } = require("os");
 const Product = require("./models/Product")
 
 app.use(express.json())
@@ -69,6 +68,17 @@ app.post('/addProduct', async (req, res) => {
 
     await product.save()
     console.log("Saved to database")
+
+    res.json({
+        success: true,
+        name: req.body.name
+    })
+})
+
+// api for deleting products
+app.post('/removeProduct', async (req, res) => {
+    await Product.findOneAndDelete({id: req.body.id})
+    console.log("removed")
 
     res.json({
         success: true,
