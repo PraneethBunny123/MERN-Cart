@@ -66,3 +66,11 @@
     background: #536cf9;
     color: white;
 }
+
+@media(max-width: 800px) {
+    .add-product {
+        width: auto;
+        padding: 30px;
+        margin: 20px;
+    }
+}
