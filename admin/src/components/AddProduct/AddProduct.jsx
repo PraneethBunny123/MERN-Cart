@@ -4,17 +4,19 @@ import upload_area from "../../assets/Admin_Assets/upload_area.svg"
 export default function AddProduct() {
     return (
         <div className='add-product'>
-            <div className='add-product-name'>
+            <div className='add-product-itemfield'>
                 <p>Product Title</p>
                 <input type='text' name='name' placeholder='Enter Product Name'/>
             </div>
-            <div className='add-product-itemfield'>
-                <p>Price</p>
-                <input type='text' name='old_price' placeholder='Enter Old Price'/>
-            </div>
-            <div className='add-product-itemfield'>
-                <p>Offer Price</p>
-                <input type='text' name='new_price' placeholder='Enter New Price'/>
+            <div className='add-product-price'>
+                <div className='add-product-itemfield'>
+                    <p>Price</p>
+                    <input type='text' name='old_price' placeholder='Enter Old Price'/>
+                </div>
+                <div className='add-product-itemfield'>
+                    <p>Offer Price</p>
+                    <input type='text' name='new_price' placeholder='Enter New Price'/>
+                </div>
             </div>
             <div className='add-product-itemfield'>
                 <p>Product Category</p>
