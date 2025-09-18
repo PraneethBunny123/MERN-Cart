@@ -1,6 +1,7 @@
 import './AddProduct.css'
 import upload_area from "../../assets/Admin_Assets/upload_area.svg"
 import { useState } from 'react'
+import { uploadImage } from '../../api'
 
 export default function AddProduct() {
     const [image, setImage] = useState(null)
@@ -21,26 +22,11 @@ export default function AddProduct() {
     }
 
     async function handleAddButton() {
-        let product = productDetails
-        console.log(productDetails)
-
-        let formData = new FormData()
-        formData.append('product', image)
-        console.log(formData)
-
-        const response = await fetch('http://localhost:4000/upload', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json'
-            },
-            body: formData
-        })
-
-        const resData = await response.json()
+        const resData = await uploadImage(image)
 
         if(resData.success) {
-            product.image = resData.image_url
-            console.log(product)
+            const updatedProductDetails = {...productDetails, image: resData.image_url}
+            console.log(updatedProductDetails)
         }
     }
 
