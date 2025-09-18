@@ -1,7 +1,7 @@
 import './AddProduct.css'
 import upload_area from "../../assets/Admin_Assets/upload_area.svg"
 import { useState } from 'react'
-import { uploadImage } from '../../api'
+import { addProduct, uploadImage } from '../../api'
 
 export default function AddProduct() {
     const [image, setImage] = useState(null)
@@ -22,12 +22,16 @@ export default function AddProduct() {
     }
 
     async function handleAddButton() {
+        let updatedProductDetails;
         const resData = await uploadImage(image)
 
         if(resData.success) {
-            const updatedProductDetails = {...productDetails, image: resData.image_url}
+            updatedProductDetails = {...productDetails, image: resData.image_url}
             console.log(updatedProductDetails)
         }
+
+        const addProductResData = await addProduct(updatedProductDetails)
+        console.log(addProductResData)
     }
 
     return (

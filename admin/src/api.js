@@ -12,3 +12,15 @@ export async function uploadImage(image) {
 
     return response.json()
 }
+
+export async function addProduct(updatedProductDetails) {
+    const response = await fetch('http://localhost:4000/addProduct', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedProductDetails)
+    })
+
+    return response.json()
+}
