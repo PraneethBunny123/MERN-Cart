@@ -1,7 +1,14 @@
 import './AddProduct.css'
 import upload_area from "../../assets/Admin_Assets/upload_area.svg"
+import { useState } from 'react'
 
 export default function AddProduct() {
+    const [image, setImage] = useState(null)
+
+    function handleImage(e) {
+        setImage(e.target.files[0])
+    }
+
     return (
         <div className='add-product'>
             <div className='add-product-itemfield'>
@@ -28,9 +35,9 @@ export default function AddProduct() {
             </div>
             <div className='add-product-itemfield'>
                 <label htmlFor='file-input'>
-                    <img src={upload_area} alt='' className='add-product-thumbnail-image'/>
+                    <img src={image? URL.createObjectURL(image) : upload_area} alt='' className='add-product-thumbnail-image'/>
                 </label>
-                <input type='file' name='image' id='file-input' hidden/>
+                <input onChange={handleImage} type='file' name='image' id='file-input' hidden/>
             </div>
             <button className='add-product-button'>ADD</button>
         </div>
