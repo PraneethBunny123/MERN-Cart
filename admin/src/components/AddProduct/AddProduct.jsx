@@ -3,15 +3,17 @@ import upload_area from "../../assets/Admin_Assets/upload_area.svg"
 import { useState } from 'react'
 import { addProduct, uploadImage } from '../../api'
 
+const initialState = {
+    name: "",
+    image: "",
+    category: "women",
+    old_price: "",
+    new_price: ""
+}
+
 export default function AddProduct() {
     const [image, setImage] = useState(null)
-    const [productDetails, setProductDetails] = useState({
-        name: "",
-        image: "",
-        category: "women",
-        old_price: "",
-        new_price: ""
-    })
+    const [productDetails, setProductDetails] = useState(initialState)
 
     function handleImage(e) {
         setImage(e.target.files[0])
@@ -21,7 +23,9 @@ export default function AddProduct() {
         setProductDetails(prevState => ({...prevState, [e.target.name]: e.target.value}))
     }
 
-    async function handleAddButton() {
+    async function handleAddButton(e) {
+        e.preventDefault()
+
         let updatedProductDetails;
         const resData = await uploadImage(image)
 
@@ -32,10 +36,16 @@ export default function AddProduct() {
 
         const addProductResData = await addProduct(updatedProductDetails)
         console.log(addProductResData)
+        
+        if(addProductResData.success) {
+            setProductDetails(initialState)
+            setImage(null)
+            alert(`Product added: ${addProductResData.name}`)
+        } else alert('Failed')
     }
 
     return (
-        <div className='add-product'>
+        <form className='add-product' onSubmit={handleAddButton}>
             <div className='add-product-itemfield'>
                 <p>Product Title</p>
                 <input 
@@ -43,7 +53,8 @@ export default function AddProduct() {
                     name='name' 
                     placeholder='Enter Product Name'
                     value={productDetails.name}
-                    onChange={handleProductDetails}    
+                    onChange={handleProductDetails}
+                    required    
                 />
             </div>
             <div className='add-product-price'>
@@ -54,7 +65,8 @@ export default function AddProduct() {
                         name='old_price' 
                         placeholder='Enter Old Price'
                         value={productDetails.old_price}
-                        onChange={handleProductDetails}    
+                        onChange={handleProductDetails}   
+                        required 
                     />
                 </div>
                 <div className='add-product-itemfield'>
@@ -64,7 +76,8 @@ export default function AddProduct() {
                         name='new_price' 
                         placeholder='Enter New Price'
                         value={productDetails.new_price}
-                        onChange={handleProductDetails}    
+                        onChange={handleProductDetails}  
+                        required  
                     />
                 </div>
             </div>
@@ -91,9 +104,10 @@ export default function AddProduct() {
                     name='image' 
                     id='file-input' 
                     hidden
+                    required
                 />
             </div>
-            <button onClick={handleAddButton} className='add-product-button'>ADD</button>
-        </div>
+            <button className='add-product-button'>ADD</button>
+        </form>
     )
 }
