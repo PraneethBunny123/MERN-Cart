@@ -20,6 +20,30 @@ export default function AddProduct() {
         setProductDetails(prevState => ({...prevState, [e.target.name]: e.target.value}))
     }
 
+    async function handleAddButton() {
+        let product = productDetails
+        console.log(productDetails)
+
+        let formData = new FormData()
+        formData.append('product', image)
+        console.log(formData)
+
+        const response = await fetch('http://localhost:4000/upload', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json'
+            },
+            body: formData
+        })
+
+        const resData = await response.json()
+
+        if(resData.success) {
+            product.image = resData.image_url
+            console.log(product)
+        }
+    }
+
     return (
         <div className='add-product'>
             <div className='add-product-itemfield'>
@@ -79,7 +103,7 @@ export default function AddProduct() {
                     hidden
                 />
             </div>
-            <button className='add-product-button'>ADD</button>
+            <button onClick={handleAddButton} className='add-product-button'>ADD</button>
         </div>
     )
 }
