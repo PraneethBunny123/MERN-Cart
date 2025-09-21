@@ -32,13 +32,16 @@ export default function ListProduct() {
             <div className='list-product-allproducts'>
                 <hr />
                 {allProducts.map(product => (
-                    <div className='list-product-format-main list-product-format' key={product.id}>
-                        <img src={product.image} alt='' className='list-product-image'/>
-                        <p>{product.name}</p>
-                        <p>{product.old_price}</p>
-                        <p>{product.new_price}</p>
-                        <p>{product.category}</p>
-                        <img src={cross_icon} className='list-product-remove-icon' alt='' />
+                    <div key={product.id}>
+                        <div className='list-product-format-main list-product-format'>
+                            <img src={product.image} alt='' className='list-product-image'/>
+                            <p>{product.name}</p>
+                            <p>{product.old_price}</p>
+                            <p>{product.new_price}</p>
+                            <p>{product.category}</p>
+                            <img src={cross_icon} className='list-product-remove-icon' alt='' />
+                        </div>
+                        <hr />
                     </div>
                 ))}
             </div>
