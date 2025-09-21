@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './ListProduct.css'
-import { fetchAllProducts } from '../../api'
+import { fetchAllProducts, removeProducts } from '../../api'
 import cross_icon from "../../assets/Admin_Assets/cross_icon.png"
 
 export default function ListProduct() {
@@ -16,7 +16,17 @@ export default function ListProduct() {
         getAllProducts()
     }, [])
 
-    console.log(allProducts)
+    // console.log(allProducts)
+
+    async function deleteProduct(id) {
+        const resData = await removeProducts(id)
+
+        if(resData.success) {
+            alert(`removed product: ${resData.name}`)
+            await getAllProducts()
+        }
+        
+    }
 
     return (
         <div className='list-product'>
@@ -39,7 +49,12 @@ export default function ListProduct() {
                             <p>{product.old_price}</p>
                             <p>{product.new_price}</p>
                             <p>{product.category}</p>
-                            <img src={cross_icon} className='list-product-remove-icon' alt='' />
+                            <img 
+                                src={cross_icon} 
+                                className='list-product-remove-icon' 
+                                alt='' 
+                                onClick={() => deleteProduct(product.id)}    
+                            />
                         </div>
                         <hr />
                     </div>

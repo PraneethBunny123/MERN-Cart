@@ -30,3 +30,15 @@ export async function fetchAllProducts() {
 
     return response.json()
 }
+
+export async function removeProducts(id) {
+    const response = await fetch('http://localhost:4000/removeProduct', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id})
+    })
+
+    return response.json()
+}
