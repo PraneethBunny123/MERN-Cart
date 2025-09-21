@@ -24,6 +24,8 @@ export default function ListProduct() {
         if(resData.success) {
             alert(`removed product: ${resData.name}`)
             await getAllProducts()
+        } else {
+            alert('Failed to remove the product')
         }
         
     }

@@ -76,13 +76,13 @@ app.post('/addProduct', async (req, res) => {
 })
 
 // api for deleting products
-app.post('/removeProduct', async (req, res) => {
-    await Product.findOneAndDelete({id: req.body.id})
+app.delete('/removeProduct/:id', async (req, res) => {
+    const deletedProduct = await Product.findOneAndDelete({id: req.params.id})
     console.log("removed")
 
     res.json({
         success: true,
-        name: req.body.name
+        name: deletedProduct.name
     })
 })
 
