@@ -33,11 +33,7 @@ export async function fetchAllProducts() {
 
 export async function removeProducts(id) {
     const response = await fetch(`http://localhost:4000/removeProduct/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({id})
+        method: 'DELETE'
     })
 
     return response.json()

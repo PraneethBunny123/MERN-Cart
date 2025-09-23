@@ -11,7 +11,7 @@ const cors = require("cors");
 const Product = require("./models/Product");
 const { request } = require("http");
 const { error } = require("console");
-const User = request('./models/User')
+const User = require("./models/User")
 
 app.use(express.json())
 app.use(cors())
