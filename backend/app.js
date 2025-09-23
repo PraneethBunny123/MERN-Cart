@@ -8,7 +8,10 @@ const jwt = require("jsonwebtoken")
 const multer = require("multer")
 const path = require("path")
 const cors = require("cors");
-const Product = require("./models/Product")
+const Product = require("./models/Product");
+const { request } = require("http");
+const { error } = require("console");
+const User = request('./models/User')
 
 app.use(express.json())
 app.use(cors())
@@ -93,6 +96,32 @@ app.get("/allProducts", async (req, res) => {
     console.log("all products fetched")
     res.send(products)
 
+})
+
+// creating endpoints for user registration
+app.post('/signup', async (req, res) => {
+    let userCheck = await User.findOne({email: req.body.email})
+
+    if(userCheck) {
+        return res.status(400).json({
+            success: false,
+            errors: "The user email was already registered"
+        })
+    }
+
+    let cart = {}
+    for(let i=0; i<300; i++) {
+        cart[i] = 0;
+    }
+
+    const user = new User({
+        name: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        cartData: cart
+    })
+
+    await user.save()
 })
 
 app.listen(port, (err) => {
