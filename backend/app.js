@@ -98,6 +98,15 @@ app.get("/allProducts", async (req, res) => {
 
 })
 
+// creating api for new collections
+app.get("/newcollections", async (req, res) => {
+    let products = await Product.find({})
+    let newCollection = products.slice(1).slice(-8)
+
+    console.log("fetched new collections")
+    res.send(newCollection)
+})
+
 // creating endpoints for user registration
 app.post('/signup', async (req, res) => {
     let userCheck = await User.findOne({email: req.body.email})
