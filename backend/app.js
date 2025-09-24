@@ -106,7 +106,7 @@ app.get("/newcollections", async (req, res) => {
     res.send(newCollection)
 })
 
-// creating api fro popular products
+// creating api for popular products
 app.get("/popular", async (req, res) => {
     let popular = await Product.find({category: "women"}).sort({new_price: -1}).limit(4)
 
@@ -176,6 +176,11 @@ app.post('/login', async (req, res) => {
             errors: 'Incorrect email id'
         })
     }
+})
+
+// creating endpoint for adding products in cartData
+app.post("/addtocart", async (req, res) => {
+    console.log(req.body)
 })
 
 app.listen(port, (err) => {
