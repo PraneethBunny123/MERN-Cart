@@ -107,6 +107,14 @@ app.get("/newcollections", async (req, res) => {
     res.send(newCollection)
 })
 
+// creating api fro popular products
+app.get("/popular", async (req, res) => {
+    let popular = await Product.find({category: "women"}).sort({new_price: -1}).limit(4)
+
+    console.log("fetched popular products in women")
+    res.send(popular)
+})
+
 // creating endpoints for user registration
 app.post('/signup', async (req, res) => {
     let userCheck = await User.findOne({email: req.body.email})

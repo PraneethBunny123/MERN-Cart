@@ -33,3 +33,9 @@ export async function fetchNewCollections() {
 
     return response.json()
 }
+
+export async function fetchPopularProducts() {
+    const response = await fetch('http://localhost:4000/popular')
+
+    return response.json()
+}
