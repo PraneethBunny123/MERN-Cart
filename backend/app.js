@@ -151,13 +151,13 @@ app.post('/login', async (req, res) => {
         } else {
             res.json({
                 success: false,
-                error: 'Wrong Password'
+                errors: 'Wrong Password'
             })
         }
     } else {
         res.json({
             success: false,
-            error: 'Wrong email id'
+            errors: 'Wrong email id'
         })
     }
 })

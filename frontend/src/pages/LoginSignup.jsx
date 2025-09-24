@@ -17,16 +17,22 @@ export default function LoginSignup() {
     }
 
     async function handleSubmit() {
-        let response;
+        let resData;
 
         if(auth === 'Sign Up') {
-            response = await Signup(formData)
+            resData = await Signup(formData)
         } else {
-            response = await Login({email: formData.email, password: formData.password})
+            resData = await Login({email: formData.email, password: formData.password})
         }
 
-        console.log(response)
-        setFormData(initialState)
+        console.log(resData)
+        
+        if(resData.success) {
+            localStorage.setItem("auth-token", resData.token)
+            window.location.replace("/")
+        } else {
+            alert(resData.errors)
+        }
     }
 
     return (
