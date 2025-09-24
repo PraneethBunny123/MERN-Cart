@@ -27,3 +27,9 @@ export async function fetchAllProducts() {
 
     return response.json()
 }
+
+export async function fetchNewCollections() {
+    const response = await fetch('http://localhost:4000/newcollections')
+
+    return response.json()
+}
