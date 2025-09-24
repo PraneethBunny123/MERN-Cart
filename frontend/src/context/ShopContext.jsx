@@ -1,7 +1,7 @@
 import { createContext, useState } from "react"
 // import all_product from "../Assets/Frontend_Assets/all_product"
 import { useEffect } from "react"
-import {AddToCart, fetchAllProducts, RemoveFromCart} from '../api'
+import {AddToCart, fetchAllProducts, fetchCartItems, RemoveFromCart} from '../api'
 
 export const ShopContext = createContext({
     all_product: [],
@@ -30,9 +30,19 @@ export default function ShopContextProvider({children}) {
     useEffect(() => {
         async function getAllProducts() {
             try {
+                //fetch products
                 const resData = await fetchAllProducts()
                 set_all_product(resData)
                 setCartItems(defaultCartObject(resData))
+
+                //fetch cart if logged in
+                const token = localStorage.getItem('auth-token')
+                if(token) {
+                    const cartResData = await fetchCartItems(token)
+                    if(cartResData.success) {
+                        setCartItems(cartResData.cartData)
+                    }
+                }
             } catch(err) {
                 console.error("failed to fetch products", err)
             }

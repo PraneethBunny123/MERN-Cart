@@ -67,3 +67,14 @@ export async function RemoveFromCart(token, itemId) {
 
     return response.json()
 }
+
+export async function fetchCartItems(token) {
+    const response = await fetch('http://localhost:4000/getcart', {
+        method: 'GET',
+        headers: {
+            'auth-token': token
+        }
+    })
+
+    return response.json()
+}
