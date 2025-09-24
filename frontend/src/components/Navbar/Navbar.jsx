@@ -37,6 +37,11 @@ export default function Navbar() {
         e.target.classList.toggle('open')
     }
 
+    function handleLogout() {
+        localStorage.removeItem('auth-token')
+        window.location.replace('/')
+    }
+
     return (
         <div className='navbar'>
             <div className='nav-logo'>
@@ -61,9 +66,13 @@ export default function Navbar() {
                 ))}
             </ul>
             <div className='nav-login-cart'>
-                <Link to="/login">
-                    <button>Login</button>
-                </Link>
+                {localStorage.getItem('auth-token') ? (
+                    <button onClick={handleLogout}>Logout</button>
+                ) : (
+                    <Link to="/login">
+                        <button>Login</button>
+                    </Link>
+                )}
                 <Link to="/cart">
                     <img src={cart_icon} alt=''/>
                 </Link>
