@@ -196,7 +196,20 @@ const fetchUser = async (req, res, next) => {
 
 // creating endpoint for adding products in cartData
 app.post("/addtocart", fetchUser, async (req, res) => {
-    console.log(req.body, req.user)
+    // console.log(req.body, req.user)
+    const itemId = req.body.itemId
+    const userId = req.user.id
+
+    let user = await User.findById(userId)
+
+    user.cartData[itemId] = (0 || user.cartData[itemId]) + 1
+
+    await User.findByIdAndUpdate(userId, {cartData: user.cartData})
+
+    res.json({
+        success: true,
+        cartData: user.cartData
+    })
 })
 
 app.listen(port, (err) => {
