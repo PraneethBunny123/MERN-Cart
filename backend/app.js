@@ -100,8 +100,7 @@ app.get("/allProducts", async (req, res) => {
 
 // creating api for new collections
 app.get("/newcollections", async (req, res) => {
-    let products = await Product.find({})
-    let newCollection = products.slice(1).slice(-8)
+    let newCollection = await Product.find({}).sort({date: -1}).limit(8)
 
     console.log("fetched new collections")
     res.send(newCollection)
