@@ -1,7 +1,7 @@
 import { createContext, useState } from "react"
 // import all_product from "../Assets/Frontend_Assets/all_product"
 import { useEffect } from "react"
-import {fetchAllProducts, fetchCartItems} from '../api'
+import {AddToCart, fetchAllProducts, RemoveFromCart} from '../api'
 
 export const ShopContext = createContext({
     all_product: [],
@@ -46,15 +46,21 @@ export default function ShopContextProvider({children}) {
 
         const token = localStorage.getItem('auth-token')
         if(token){
-            const resData = await fetchCartItems(token, itemId)
+            const resData = await AddToCart(token, itemId)
             console.log(resData)
         }
 
         
     } 
 
-    function removeFromCart(itemId) {
+    async function removeFromCart(itemId) {
         setCartItems(prevState => ({...prevState, [itemId]: prevState[itemId]-1}))
+
+        const token = localStorage.getItem('auth-token')
+        if(token) {
+            const resData = await RemoveFromCart(token, itemId)
+            console.log(resData)
+        }
     } 
 
     function getTotalCartAmount() {

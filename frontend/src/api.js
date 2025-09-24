@@ -40,8 +40,22 @@ export async function fetchPopularProducts() {
     return response.json()
 }
 
-export async function fetchCartItems(token, itemId) {
+export async function AddToCart(token, itemId) {
     const response = await fetch('http://localhost:4000/addtocart', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/form-data',
+            'auth-token': token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'itemId': itemId})
+    })
+
+    return response.json()
+}
+
+export async function RemoveFromCart(token, itemId) {
+    const response = await fetch('http://localhost:4000/removefromcart', {
         method: 'POST',
         headers: {
             Accept: 'application/form-data',
