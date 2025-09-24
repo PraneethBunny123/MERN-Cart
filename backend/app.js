@@ -206,6 +206,29 @@ app.post("/addtocart", fetchUser, async (req, res) => {
 
     await User.findByIdAndUpdate(userId, {cartData: user.cartData})
 
+    console.log("added", itemId)
+
+    res.json({
+        success: true,
+        cartData: user.cartData
+    })
+})
+
+// creating endpoint to remove products from cartData
+app.post("/removefromcart", fetchUser, async (req, res) => {
+    // console.log(req.body, req.user)
+    const itemId = req.body.itemId
+    const userId = req.user.id
+
+    let user = await User.findById(userId)
+
+    if(user.cartData[itemId] > 0) {
+        user.cartData[itemId] -= 1
+    }
+
+    await User.findByIdAndUpdate(userId, {cartData: user.cartData})
+    console.log("removed", itemId)
+
     res.json({
         success: true,
         cartData: user.cartData
