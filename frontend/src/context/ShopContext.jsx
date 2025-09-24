@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import {fetchAllProducts} from '../api'
 
 export const ShopContext = createContext({
-    all_product: [{}],
+    all_product: [],
     cartItems: {},
     addToCart: () => {},
     removeFromCart: () => {},
