@@ -235,6 +235,17 @@ app.post("/removefromcart", fetchUser, async (req, res) => {
     })
 })
 
+// creating endpoint to get cartData
+app.get('/getcart', fetchUser, async (req, res) => {
+    const userId = req.user.id
+    let user = await User.findById(userId)
+
+    res.json({
+        success: true,
+        cartData: user.cartData
+    })
+})
+
 app.listen(port, (err) => {
     if(!err) {
         console.log("server running on port: "+ port)
