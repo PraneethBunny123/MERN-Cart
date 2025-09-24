@@ -9,8 +9,6 @@ const multer = require("multer")
 const path = require("path")
 const cors = require("cors");
 const Product = require("./models/Product");
-const { request } = require("http");
-const { error } = require("console");
 const User = require("./models/User")
 
 app.use(express.json())
@@ -143,7 +141,7 @@ app.post('/signup', async (req, res) => {
     const data = {
         user: {id: user.id}
     }
-    const token = jwt.sign(data, 'secret_ecom')
+    const token = jwt.sign(data, process.env.JWT_SECRET, { expiresIn: "1h" })
     return res.json({
         success: true,
         token
@@ -159,7 +157,7 @@ app.post('/login', async (req, res) => {
             const data = {
                 user: {id: user.id}
             }
-            const token = jwt.sign(data, 'secret_ecom')
+            const token = jwt.sign(data, process.env.JWT_SECRET, { expiresIn: "1h" })
             return res.json({
                 success: true,
                 token
@@ -185,11 +183,11 @@ const fetchUser = async (req, res, next) => {
         res.status(401).send({errors: "Please authenticate using valid token"})
     } else {
         try {
-            const data = jwt.verify(token, 'secret_ecom')
+            const data = jwt.verify(token, process.env.JWT_SECRET)
             req.user = data.user
             next()
         } catch(err) {
-            res.status(401).send({errors: err})
+            res.status(401).send({errors: "Invalid token"})
         }
     }
 }
