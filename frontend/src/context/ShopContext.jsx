@@ -1,5 +1,7 @@
 import { createContext, useState } from "react"
-import all_product from "../Assets/Frontend_Assets/all_product"
+// import all_product from "../Assets/Frontend_Assets/all_product"
+import { useEffect } from "react"
+import {fetchAllProducts} from '../api'
 
 export const ShopContext = createContext({
     all_product: [{}],
@@ -10,8 +12,8 @@ export const ShopContext = createContext({
     getTotalCartItems: () => {}
 })
 
-function defaultCartObject() {
-    return all_product.reduce((acc, product) => {
+function defaultCartObject(products) {
+    return products.reduce((acc, product) => {
         acc[product.id] = 0
 
         return acc
@@ -21,9 +23,23 @@ function defaultCartObject() {
 // console.log(defaultCartObject())
 
 export default function ShopContextProvider({children}) {
-    const [cartItems, setCartItems] = useState(defaultCartObject())
+    const [all_product, set_all_product] = useState([])
+    const [cartItems, setCartItems] = useState({})
 
     // console.log(cartItems)
+    useEffect(() => {
+        async function getAllProducts() {
+            try {
+                const resData = await fetchAllProducts()
+                set_all_product(resData)
+                setCartItems(defaultCartObject(resData))
+            } catch(err) {
+                console.error("failed to fetch products", err)
+            }
+        }
+
+        getAllProducts()        
+    }, [])
 
     function addToCart(itemId) {
         setCartItems(prevState => ({...prevState, [itemId]: prevState[itemId]+1}))
