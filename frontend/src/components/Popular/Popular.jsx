@@ -1,24 +1,32 @@
 import "./Popular.css"
 // import data_product from "../../Assets/Frontend_Assets/data"
 import Item from "../Item/Item"
-import { useContext } from "react"
-import { ShopContext } from "../../context/ShopContext"
-
+import { useState } from "react"
+import { useEffect } from "react"
+import { fetchPopularProducts } from "../../api"
 
 export default function Popular() {
-    const {all_product} = useContext(ShopContext)
+    const [popularProducts, setPopularProducts] = useState([])
 
-    const womenProducts = all_product.filter(product => product.category === "women")
-    const popularInWomen = womenProducts.sort((a,b) => b.new_price - a.new_price).slice(0,4)
-    // console.log(womenProducts)
-    // console.log(popularInWomen)
+    useEffect(() => {
+        async function getPopularProducts() {
+            try {
+                const resData = await fetchPopularProducts()
+                setPopularProducts(resData)
+            } catch(err) {
+                console.error("failed to fetch products", err)
+            }
+        }
+
+        getPopularProducts()
+    }, [])
 
     return (
         <div className="popular">
             <h1>POPULAR IN WOMEN</h1>
             <hr />
             <div className="popular-item">
-                {popularInWomen.map(product => (
+                {popularProducts.map(product => (
                     <Item 
                         key={product.id}
                         {...product}
