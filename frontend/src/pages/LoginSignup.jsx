@@ -11,27 +11,37 @@ const initialState = {
 export default function LoginSignup() {
     const [auth, setAuth] = useState('Sign Up')
     const [formData, setFormData] = useState(initialState)
+    const [loading, setLoading] = useState(false)
 
     function handleOnChange(e) {
         setFormData(prevState => ({...prevState, [e.target.name]: e.target.value}))
     }
 
-    async function handleSubmit() {
-        let resData;
+    async function handleSubmit(e) {
+        e.preventDefault()
+        setLoading(true)
+        console.log("submit")
 
-        if(auth === 'Sign Up') {
-            resData = await Signup(formData)
-        } else {
-            resData = await Login({email: formData.email, password: formData.password})
-        }
+        try {
+            let resData;
 
-        console.log(resData)
-        
-        if(resData.success) {
-            localStorage.setItem("auth-token", resData.token)
-            window.location.replace("/")
-        } else {
-            alert(resData.errors)
+            if(auth === 'Sign Up') {
+                resData = await Signup(formData)
+            } else {
+                resData = await Login({email: formData.email, password: formData.password})
+            }
+            
+            if(resData.success) {
+                localStorage.setItem("auth-token", resData.token)
+                window.location.replace("/")
+            } else {
+                alert(resData.errors)
+            }
+        } catch(err) {
+            alert("Something went wrong. Please try again later")
+            console.log(err)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -39,7 +49,7 @@ export default function LoginSignup() {
         <div className="loginsignup">
             <div className="loginsignup-container">
                 <h1>{auth}</h1>
-                <div className="loginsignup-fields">
+                <form className="loginsignup-fields" onSubmit={handleSubmit}>
                     {auth === 'Sign Up' && 
                         <input 
                             type="text" 
@@ -54,17 +64,20 @@ export default function LoginSignup() {
                         name="email" 
                         placeholder="Email Address"
                         value={formData.email}
-                        onChange={handleOnChange}    
+                        onChange={handleOnChange}   
+                        required 
                     />
                     <input 
                         type="password" 
                         name="password" 
                         placeholder="Password"
                         value={formData.password}
-                        onChange={handleOnChange}      
+                        onChange={handleOnChange}     
+                        required 
                     />
-                </div>
-                <button onClick={handleSubmit}>Continue</button>
+                    <button type="submit" disabled={loading}>{loading ? "Please wait..." : "Continue"}</button>
+                </form>
+                
                 {auth === 'Sign Up' ? (
                     <p className="loginsignup-login">Already have an account? <span onClick={() => setAuth('Login')} style={{cursor: "pointer"}}>Login here</span></p>
                 ) : (
