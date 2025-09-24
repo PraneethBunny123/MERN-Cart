@@ -1,19 +1,64 @@
 import { useState } from "react"
 import "./css/LoginSignup.css"
+import { Login, Signup } from "../api"
+
+const initialState = {
+    username: "",
+    email: "",
+    password: ""
+}
 
 export default function LoginSignup() {
     const [auth, setAuth] = useState('Sign Up')
+    const [formData, setFormData] = useState(initialState)
+
+    function handleOnChange(e) {
+        setFormData(prevState => ({...prevState, [e.target.name]: e.target.value}))
+    }
+
+    async function handleSubmit() {
+        let response;
+
+        if(auth === 'Sign Up') {
+            response = await Signup(formData)
+        } else {
+            response = await Login({email: formData.email, password: formData.password})
+        }
+
+        console.log(response)
+        setFormData(initialState)
+    }
 
     return (
         <div className="loginsignup">
             <div className="loginsignup-container">
                 <h1>{auth}</h1>
                 <div className="loginsignup-fields">
-                    {auth === 'Sign Up' && <input type="text" placeholder="Your Name"/>}
-                    <input type="email" placeholder="Email Address"/>
-                    <input type="password" placeholder="Password"/>
+                    {auth === 'Sign Up' && 
+                        <input 
+                            type="text" 
+                            name="username" 
+                            placeholder="Your Name" 
+                            value={formData.username}
+                            onChange={handleOnChange}
+                        />
+                    }
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Email Address"
+                        value={formData.email}
+                        onChange={handleOnChange}    
+                    />
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleOnChange}      
+                    />
                 </div>
-                <button>Continue</button>
+                <button onClick={handleSubmit}>Continue</button>
                 {auth === 'Sign Up' ? (
                     <p className="loginsignup-login">Already have an account? <span onClick={() => setAuth('Login')} style={{cursor: "pointer"}}>Login here</span></p>
                 ) : (

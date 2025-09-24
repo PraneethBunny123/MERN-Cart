@@ -128,7 +128,7 @@ app.post('/signup', async (req, res) => {
         user: {id: user.id}
     }
     const token = jwt.sign(data, 'secret_ecom')
-    res.json({
+    return res.json({
         success: true,
         token
     })
